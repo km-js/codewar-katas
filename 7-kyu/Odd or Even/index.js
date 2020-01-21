@@ -12,7 +12,8 @@ odd_or_even(vec![0, -1, -5]) returns "even"
  */
 
 function oddOrEven(array) {
-	let sum = array.length > 0 ?
-		array.reduce((a, b) => a + b) : 2;
+	let sum = array.length > 0
+		 ? array.reduce((a, b) => a + b)
+		 : 2;
 	return sum % 2 === 0 ? "even" : "odd";
 }
