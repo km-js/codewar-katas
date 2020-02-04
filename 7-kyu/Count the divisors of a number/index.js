@@ -1,23 +1,26 @@
 /*
-Count the number of divisors of a positive integer n.
+Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
 
-Random tests go up to n = 500000.
+If you want to know more http://en.wikipedia.org/wiki/DNA
 
-Examples:
-divisors(4)  = 3  // 1, 2, 4
-divisors(5)  = 2  // 1, 5
-divisors(12) = 6  // 1, 2, 3, 4, 6, 12
-divisors(30) = 8  // 1, 2, 3, 5, 6, 10, 15, 30
+In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
 
+More similar exercise are found here http://rosalind.info/problems/list-view/ (source)
+
+DNAStrand ("ATTGC") // return "TAACG"
+
+DNAStrand ("GTAT") // return "CATA" 
 
  */
 
-function getDivisorsCnt(n) {
-	var result = 0;
-	for (var i = 1; i <= n; i++) {
-		if (n % i === 0) {
-			result++;
-		}
-	}
-	return result;
+function DNAStrand(dna){
+
+const symbols = {
+  "A":"T",
+  "T":"A",
+  "C":"G",
+  "G":"C"
+}
+
+return dna.replace(/[ATCG]/g, m=> symbols[m]);
 }
