@@ -1,26 +1,55 @@
 /*
-Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
+Definition
 
-If you want to know more http://en.wikipedia.org/wiki/DNA
+Extra perfect number is the number that first and last bits are set bits.
+Task
 
-In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+Given a positive integer N , Return the extra perfect numbers in range from 1 to N .
+Warm-up (Highly recommended)
+Playing With Numbers Series
+Notes
 
-More similar exercise are found here http://rosalind.info/problems/list-view/ (source)
+Number passed is always Positive .
 
-DNAStrand ("ATTGC") // return "TAACG"
+Returned array/list should contain the extra perfect numbers in ascending order from lowest to highest
 
-DNAStrand ("GTAT") // return "CATA" 
+Input >> Output Examples
+
+extraPerfect(3)  ==>  return {1,3}
+
+Explanation:
+(1)10 =(1)2
+
+First and last bits as set bits.
+(3)10 = (11)2
+
+First and last bits as set bits.
+
+extraPerfect(7)  ==>  return {1,3,5,7}
+
+Explanation:
+(5)10 = (101)2
+
+First and last bits as set bits.
+(7)10 = (111)2
+
+First and last bits as set bits.
+Playing with Numbers Series
+Playing With Lists/Arrays Series
+For More Enjoyable Katas
+ALL translations are welcomed
+Enjoy Learning !!
+Zizou
 
  */
 
-function DNAStrand(dna){
-
-const symbols = {
-  "A":"T",
-  "T":"A",
-  "C":"G",
-  "G":"C"
-}
-
-return dna.replace(/[ATCG]/g, m=> symbols[m]);
+function extraPerfect(n) {
+	let result = [];
+	for (let i = 1; i <= n; i++) {
+		const arr = i.toString(2).split('');
+		if (arr[0] && arr[arr.length - 1] === "1") {
+			result.push(i);
+		}
+	}
+	return result;
 }
