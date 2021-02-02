@@ -1,76 +1,27 @@
 /*
-Definition
+Reverse Number is a number which is the same when reversed.
 
-Balanced number is the number that * The sum of all digits to the left of the middle digit(s) and the sum of all digits to the right of the middle digit(s) are equal*.
-Task
+For Example;
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 22, 33, 44, 55, 66, 77, 88, 99, 101 => First 20 Reverse Numbers
 
-Given a number, Find if it is Balanced or not .
-Warm-up (Highly recommended)
-Playing With Numbers Series
-Notes
+TASK:
 
-If the number has an odd number of digits then there is only one middle digit, e.g. 92645 has middle digit 6; otherwise, there are two middle digits , e.g. 1301 has middle digits 3 and 0
+You need to return the nth reverse number. (Assume that reverse numbers start from 0 as shown in the example.)
+NOTES:
 
-The middle digit(s) should not be considered when determining whether a number is balanced or not, e.g 413023 is a balanced number because the left sum and right sum are both 5.
-
-Number passed is always Positive .
-
-Return the result as String
-
-Input >> Output Examples
-
-(balanced-num 7) ==> return "Balanced"
-
-Explanation:
-
-Since , The sum of all digits to the left of the middle digit (0)
-
-and the sum of all digits to the right of the middle digit (0) are equal , then It's Balanced
-
-(balanced-num 295591) ==> return "Not Balanced"
-
-Explanation:
-
-Since , The sum of all digits to the left of the middle digits (11)
-
-and the sum of all digits to the right of the middle digits (10) are Not equal , then It's Not Balanced
-
-Note : The middle digit(s) are 55 .
-
-(balanced-num 959) ==> return "Balanced"
-
-Explanation:
-
-Since , The sum of all digits to the left of the middle digits (9)
-
-and the sum of all digits to the right of the middle digits (9) are equal , then It's Balanced
-
-Note : The middle digit is 5 .
-
-(balanced-num 27102983) ==> return "Not Balanced"
+0 < n <= 1000000
  */
 
-function balancedNum(number) {
-	let arr = number.toString(10).split('');
+function findReverseNumber(n) {
+var resultArr=[];
+  
+for(i=0; i<100000; i++){
+  var arr = i.toString().split("");
+  var reversedArr = i.toString().split("").reverse();
 
-	(arr.length % 2 !== 0) ?
-	arr.splice(arr.length / 2, 1)
-	 :
-	arr.splice((arr.length / 2) - 1, 1)
-	 && arr.splice(arr.length / 2, 1);
-
-	const secondHalf = arr.splice(0, (arr.length / 2));
-
-	const add = (a, b) =>
-	parseInt(a, 10) + parseInt(b, 10);
-
-	if (arr.length < 1) {
-		return "Balanced"
-	} else {
-		if (arr.reduce(add) === secondHalf.reduce(add)) {
-			return "Balanced"
-		} else {
-			return "Not Balanced";
-		}
-	}
+if( JSON.stringify(arr) === JSON.stringify(reversedArr)){
+  resultArr.push(i); 
+}}
+  
+return resultArr[n-1];
 }
